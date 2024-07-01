@@ -29,16 +29,16 @@ jobs:
           cp -r CVE-2016-9086/* out/CVE-2016-9086/
       - uses: actions/configure-pages@v5
       - name: Upload CVE-2016-9086 Pages Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
+          name: cve-2016-9086
           path: out/CVE-2016-9086
       - name: Deploy to GitHub Pages (CVE-2016-9086)
         id: deployment-cve-2016-9086
         uses: actions/deploy-pages@v4
-      - name: Delete CVE-2016-9086 Artifact
-        uses: geekyeggo/delete-artifact@v5
         with:
-          name: github-pages
+          artifact_name: cve-2016-9086
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-cve-2021-22205:
     needs: deploy-cve-2016-9086
@@ -54,13 +54,13 @@ jobs:
           cp -r CVE-2021-22205/* out/CVE-2021-22205/
       - uses: actions/configure-pages@v5
       - name: Upload CVE-2021-22205 Pages Artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
+          name: cve-2021-22205
           path: out/CVE-2021-22205
       - name: Deploy to GitHub Pages (CVE-2021-22205)
         id: deployment-cve-2021-22205
         uses: actions/deploy-pages@v4
-      - name: Delete CVE-2021-22205 Artifact
-        uses: geekyeggo/delete-artifact@v5
         with:
-          name: github-pages
+          artifact_name: cve-2021-22205
+          github_token: ${{ secrets.GITHUB_TOKEN }}
