@@ -15,33 +15,51 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+
+  deploy-cve-2016-9086:
     environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages-cve-2016-9086
+      url: ${{ steps.deployment-cve-2016-9086.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up pages directories
+      - name: Set up CVE-2016-9086 directory
         run: |
           mkdir -p out/CVE-2016-9086
-          mkdir -p out/CVE-2021-22205
           cp -r CVE-2016-9086/* out/CVE-2016-9086/
-          cp -r CVE-2021-22205/* out/CVE-2021-22205/
-
       - uses: actions/configure-pages@v5
-
-      - name: Upload Pages Artifact
+      - name: Upload CVE-2016-9086 Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: out
-
-      - name: Deploy to GitHub Pages
-        id: deployment
+          path: out/CVE-2016-9086
+      - name: Deploy to GitHub Pages (CVE-2016-9086)
+        id: deployment-cve-2016-9086
         uses: actions/deploy-pages@v4
-
-      - name: Delete Pages Artifact
+      - name: Delete CVE-2016-9086 Artifact
         uses: geekyeggo/delete-artifact@v5
         with:
-          name: out
+          name: out-cve-2016-9086
+
+  deploy-cve-2021-22205:
+    environment:
+      name: github-pages-cve-2021-22205
+      url: ${{ steps.deployment-cve-2021-22205.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up CVE-2021-22205 directory
+        run: |
+          mkdir -p out/CVE-2021-22205
+          cp -r CVE-2021-22205/* out/CVE-2021-22205/
+      - uses: actions/configure-pages@v5
+      - name: Upload CVE-2021-22205 Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out/CVE-2021-22205
+      - name: Deploy to GitHub Pages (CVE-2021-22205)
+        id: deployment-cve-2021-22205
+        uses: actions/deploy-pages@v4
+      - name: Delete CVE-2021-22205 Artifact
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: out-cve-2021-22205
