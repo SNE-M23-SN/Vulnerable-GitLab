@@ -30,6 +30,10 @@ jobs:
       - name: Deploy to GitHub Pages (CVE-2016-9086)
         id: deployment-cve-2016-9086
         uses: actions/deploy-pages@v4
+      - name: Delete the CVE-2016-9086 artifact
+        uses: actions/delete-artifact@v3
+        with:
+          name: github-pages
 
   deploy-cve-2021-22205:
     environment:
@@ -45,3 +49,7 @@ jobs:
       - name: Deploy to GitHub Pages (CVE-2021-22205)
         id: deployment-cve-2021-22205
         uses: actions/deploy-pages@v4
+      - name: Delete the CVE-2021-22205 artifact
+        uses: actions/delete-artifact@v3
+        with:
+          name: github-pages
