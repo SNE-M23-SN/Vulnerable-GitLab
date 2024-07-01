@@ -38,7 +38,6 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: cve-2016-9086
-          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-cve-2021-22205:
     needs: deploy-cve-2016-9086
@@ -63,4 +62,3 @@ jobs:
         uses: actions/deploy-pages@v4
         with:
           artifact_name: cve-2021-22205
-          github_token: ${{ secrets.GITHUB_TOKEN }}
