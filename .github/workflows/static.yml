@@ -26,7 +26,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: /CVE-2016-9086
+          path: CVE-2016-9086
       - name: Deploy to GitHub Pages (root)
         id: deployment-root
         uses: actions/deploy-pages@v4
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: /CVE-2021-22205
+          path: CVE-2021-22205
       - name: Deploy to GitHub Pages (docs)
         id: deployment-docs
         uses: actions/deploy-pages@v4
