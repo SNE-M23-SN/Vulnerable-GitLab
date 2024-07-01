@@ -1,0 +1,47 @@
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+
+  deploy-root:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment-root.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /CVE-2016-9086
+      - name: Deploy to GitHub Pages (root)
+        id: deployment-root
+        uses: actions/deploy-pages@v4
+
+  deploy-docs:
+    environment:
+      name: github-pages-docs
+      url: ${{ steps.deployment-docs.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /CVE-2021-22205
+      - name: Deploy to GitHub Pages (docs)
+        id: deployment-docs
+        uses: actions/deploy-pages@v4
