@@ -38,7 +38,7 @@ jobs:
       - name: Delete CVE-2016-9086 Artifact
         uses: geekyeggo/delete-artifact@v5
         with:
-          name: out-cve-2016-9086
+          name: github-pages
 
   deploy-cve-2021-22205:
     environment:
@@ -62,4 +62,4 @@ jobs:
       - name: Delete CVE-2021-22205 Artifact
         uses: geekyeggo/delete-artifact@v5
         with:
-          name: out-cve-2021-22205
+          name: github-pages
