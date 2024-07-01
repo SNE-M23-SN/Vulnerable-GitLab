@@ -41,6 +41,7 @@ jobs:
           name: github-pages
 
   deploy-cve-2021-22205:
+    needs: deploy-cve-2016-9086
     environment:
       name: github-pages-cve-2021-22205
       url: ${{ steps.deployment-cve-2021-22205.outputs.page_url }}
